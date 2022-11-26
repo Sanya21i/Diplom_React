@@ -4,7 +4,7 @@ interface IButtonProps extends React.ComponentProps<'button'>{
    text: string;
 };
 
-const Button = ({text, ...rest}: IButtonProps) => {
+const Button = ({ text, ...rest }: IButtonProps) => {
    return (
       <button {...rest}>{text}</button>
    )

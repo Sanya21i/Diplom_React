@@ -1,12 +1,12 @@
 import { axiosPrivate } from '../../api';
-import { IAuthRequestLoginData, IAuthResponseLoginData, IAuthRequestRegistartionData, IAuthResponseRegistrationData, IAuthRequestActivationData, IAuthResponseActivationData, IAuthResponseActivatedUserData,IAuthRequestRefreshToken,IAuthResponseRefreshToken } from '../../types/authTypes';
+import { IAuthRequestLoginData, IAuthResponseLoginData, IAuthRequestRegistartionData, IAuthResponseRegistrationData, IAuthRequestActivationData, IAuthResponseActivationData, IAuthResponseActivatedUserData, IAuthRequestRefreshToken, IAuthResponseRefreshToken } from '../../types/authTypes';
 
 export const login = async ({ email, password }: IAuthRequestLoginData) => {
 	return await axiosPrivate.post<IAuthResponseLoginData>(`/auth/jwt/create/`, { email, password });
 };
 
 export const registration = async ({ username, email, password }: IAuthRequestRegistartionData) => {
-	return await axiosPrivate.post<IAuthResponseRegistrationData>(`auth/users/`, { username, email, password });
+	return await axiosPrivate.post<IAuthResponseRegistrationData>(`/auth/users/`, { username, email, password });
 };
 
 export const accountActivation = async ({ uid, token }: IAuthRequestActivationData) => {

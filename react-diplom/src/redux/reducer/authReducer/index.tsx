@@ -8,7 +8,7 @@ interface IInitialAuthState {
 	isLoading: boolean;
 	error: null | string;
 	isAuth: boolean;
-};
+}
 
 const initialState: IInitialAuthState = {
 	data: {} as IAuthResponseActivatedUserData,
@@ -17,7 +17,7 @@ const initialState: IInitialAuthState = {
 	isAuth: false,
 };
 
-const authReducer: Reducer<IInitialAuthState, AuthActionType> = ( state = initialState, action) => {
+const authReducer: Reducer<IInitialAuthState, AuthActionType> = (state = initialState, action) => {
    switch (action.type) {
 		case AUTH_LOADING:
 			return { ...state, isLoading: action.payload }
@@ -27,7 +27,7 @@ const authReducer: Reducer<IInitialAuthState, AuthActionType> = ( state = initia
 			return { ...state, error: action.payload }
 		default:
 			return state;
-	}
+		}
 };
 
 export default authReducer;

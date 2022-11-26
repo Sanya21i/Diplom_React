@@ -1,7 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { refreshToken } from '../services/authServices';
 
-export const BASE_API = `https://studapi.teachmeskills.by`;
+const BASE_API = `https://studapi.teachmeskills.by`;
+const BASE_CONTENT_API = `https://api.spaceflightnewsapi.net/`
 
 export const axiosPrivate = axios.create({
    baseURL: BASE_API,
@@ -11,11 +12,11 @@ export const axiosPrivate = axios.create({
 axiosPrivate.interceptors.request.use(
 	(config: AxiosRequestConfig) => {
 		const token = localStorage.getItem('accessToken');
-
+		
 		if (token) {
 			config.headers!.authorization = `Bearer ${token}`;
 		}
-
+		
 		return config;
 	},
 	(error: AxiosError) => {
@@ -26,7 +27,8 @@ axiosPrivate.interceptors.request.use(
 axiosPrivate.interceptors.response.use(
 	(response: AxiosResponse) => response,
 	async (error) => {
-      const originalRequest = error.config;
+		const originalRequest = error.config;
+		
 		if (error.response) {
 			if (error.response.status === 401 && !originalRequest.isRetry) {
 				const token = localStorage.getItem('refreshToken');
@@ -52,3 +54,7 @@ axiosPrivate.interceptors.response.use(
 		}
 	}
 );
+
+export const axiosContent = axios.create({
+   baseURL: BASE_CONTENT_API,   
+});

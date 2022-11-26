@@ -12,12 +12,12 @@ function* fetchLogin({ payload: { email, password } }: ReturnType<typeof authAct
       const response: AxiosResponse<IAuthResponseLoginData> = yield call(login, { email, password })
 		if (response.data && response.status === 200) {
 			const accessToken = response.data.access;
-         const refreshToken = response.data.refresh;
-      
+			const refreshToken = response.data.refresh;
+
          localStorage.setItem('accessToken', accessToken);
          localStorage.setItem('refreshToken', refreshToken);
 
-         const userData: AxiosResponse<IAuthResponseActivatedUserData> = yield call(getAuthorizedUserInfo)
+			const userData: AxiosResponse<IAuthResponseActivatedUserData> = yield call(getAuthorizedUserInfo)
          
 			yield put(authActionCreators.getLoginDataSuccess({ ...userData.data }));
 		}

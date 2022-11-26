@@ -1,0 +1,25 @@
+.footer {
+  margin: 35px 0;
+}
+.footer-container {
+  max-width: 1120px;
+  margin: auto;
+  border-top: 1px solid rgba(49, 48, 55, 0.1);
+  padding: 35px 0;
+}
+.footer-container-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-container-wrap-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(49, 48, 55, 0.5);
+}
+.footer-container-wrap-switcher {
+  color: rgba(49, 48, 55, 0.5);
+}/*# sourceMappingURL=Footer.css.map */

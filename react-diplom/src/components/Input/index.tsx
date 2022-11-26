@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes} from 'react';
-import './Input.scss';
+
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement>{
    value: string;

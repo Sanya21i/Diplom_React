@@ -24,12 +24,10 @@ const PersistLogin = () => {
 				} catch (e) {
 					console.error(e)
 				}
-			}
-			
+			}			
 			getAuthUserData();
 		}
-	}, [dispatch, token]);
-	
+	}, [dispatch, token]);	
 	return isAuth || token ? <Outlet /> : <Navigate to='/login' replace />
 }
 

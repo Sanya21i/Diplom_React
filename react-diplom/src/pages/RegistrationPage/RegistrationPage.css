@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+h1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 80px;
+  color: #313037;
+}
+
+.h1-p {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+  color: #323537;
+}
+
+h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #323537;
+}
+
+.s1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #323537;
+}
+
+.s1-p {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.b1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #323537;
+}
+
+.b1-p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  color: #323537;
+}
+
+.b2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #323537;
+}
+
+.b2-p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #323537;
+}
+
+.c2-p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.registration-container {
+  max-width: 1120px;
+  margin: auto;
+}
+.registration-container-title {
+  margin: 32px 0 72px;
+}
+.registration-container-wrapper {
+  background-color: white;
+  max-width: 624px;
+  height: 590px;
+  margin: 0 auto 150px;
+  padding: 40px;
+  border-radius: 16px;
+}
+.registration-container-wrapper-username {
+  margin-bottom: 40px;
+}
+.registration-container-wrapper-username-title {
+  margin-bottom: 8px;
+}
+.registration-container-wrapper-username-input Input {
+  width: 100%;
+  padding: 18px 20px;
+}
+.registration-container-wrapper-email {
+  margin-bottom: 40px;
+}
+.registration-container-wrapper-email-title {
+  margin-bottom: 8px;
+}
+.registration-container-wrapper-email-input Input {
+  width: 100%;
+  padding: 18px 20px;
+}
+.registration-container-wrapper-password {
+  margin-bottom: 48px;
+}
+.registration-container-wrapper-password-title {
+  margin-bottom: 8px;
+}
+.registration-container-wrapper-password-input Input {
+  width: 100%;
+  padding: 18px 20px;
+}
+.registration-container-wrapper-password-text {
+  margin-top: 16px;
+}
+.registration-container-wrapper-button {
+  margin-bottom: 24px;
+}
+.registration-container-wrapper-button Button {
+  width: 100%;
+  height: 56px;
+  background-color: #6C1BDB;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.registration-container-wrapper-sing-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #8D8E97;
+}
+
+.error-items-container {
+  max-width: 1120px;
+  margin: auto;
+}
+.error-items-container-wrap {
+  background-color: white;
+  width: 624px;
+  height: 260px;
+  margin: 30px auto 70px;
+  padding: 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-items-container-wrap Button {
+  margin-top: 30px;
+  width: 420px;
+  height: 56px;
+  background-color: #6C1BDB;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+}/*# sourceMappingURL=RegistrationPage.css.map */
