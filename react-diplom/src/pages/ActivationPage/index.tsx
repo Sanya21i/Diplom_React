@@ -47,8 +47,8 @@ const ActivationPage = () => {
 					<>
 						{!isLoading ? (
 							<>
-								<div className="container">
-									<div className="wrapper-activation-page">
+								<div className='container'>
+									<div className='wrapper-activation-page'>
 										{errorMessage && <p> {errorMessage} </p>}
 									</div>
 								</div>

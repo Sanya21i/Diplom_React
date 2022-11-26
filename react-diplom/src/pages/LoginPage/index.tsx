@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { errorAuthSelector, isLoadingAuthSelector, isAuthAuthSelector } from '../../redux/selectors/authSelectors';
 import Loading from '../../components/Loading';
 
-const initialLoginForm = { email: "", password: "" };
+const initialLoginForm = { email: '', password: '' };
 
 const LoginPage = () => {
 	const [loginForm, setLoginForm] = useState(initialLoginForm);
@@ -45,41 +45,41 @@ const LoginPage = () => {
 
 	return (
 		<>
-			<div className="login">
-				<div className="login-container">
-					<div className="login-container-title">
+			<div className='login'>
+				<div className='login-container'>
+					<div className='login-container-title'>
 						<h1>Sign In</h1>
 					</div>
-					<div className="login-container-wrapper">
-						{errorMessage && <div className="login-container-wrapper-error"><p>{errorMessage}</p></div>}
+					<div className='login-container-wrapper'>
+						{errorMessage && <div className='login-container-wrapper-error'><p>{errorMessage}</p></div>}
 						{!isLoading ? (
 							<>
-								<div className="login-container-wrapper-email">									
-									<div className="login-container-wrapper-email-title">
-										<p className="b1">Email</p>
+								<div className='login-container-wrapper-email'>									
+									<div className='login-container-wrapper-email-title'>
+										<p className='b1'>Email</p>
 									</div>
-									<div className="login-container-wrapper-email-input">
-										<Input className="c2-p" placeholder="Your email" onChange={onLoginFormChange} fieldName="email" value={loginForm.email} />
-									</div>
-								</div>
-								<div className="login-container-wrapper-password">
-									<div className="login-container-wrapper-password-title">
-										<p className="b1">Password</p>
-									</div>
-									<div className="login-container-wrapper-password-input">
-										<Input className="c2-p" placeholder="Your password" onChange={onLoginFormChange} fieldName="password" value={loginForm.password} />
-									</div>
-									<div className="login-container-wrapper-password-text">
-										<p className="c2-p">Forgot password?</p>
+									<div className='login-container-wrapper-email-input'>
+										<Input className='c2-p' placeholder='Your email' onChange={onLoginFormChange} fieldName='email' value={loginForm.email} />
 									</div>
 								</div>
-								<div className="login-container-wrapper-button">
-									<Button disabled={isButtonDisabled} type="button" text="Sign in" onClick={onLoginFormSubmit} />
+								<div className='login-container-wrapper-password'>
+									<div className='login-container-wrapper-password-title'>
+										<p className='b1'>Password</p>
+									</div>
+									<div className='login-container-wrapper-password-input'>
+										<Input className='c2-p' placeholder='Your password' onChange={onLoginFormChange} fieldName='password' value={loginForm.password} />
+									</div>
+									<div className='login-container-wrapper-password-text'>
+										<p className='c2-p'>Forgot password?</p>
+									</div>
 								</div>
-								<div className="login-container-wrapper-sing-up">
-									<span className="sing-up-text">Don't have an account?</span>
+								<div className='login-container-wrapper-button'>
+									<Button disabled={isButtonDisabled} type='button' text='Sign in' onClick={onLoginFormSubmit} />
+								</div>
+								<div className='login-container-wrapper-sing-up'>
+									<span className='sing-up-text'>Don't have an account?</span>
 									<Link to='/registration' >
-										<span className="sing-up-link">Sing Up</span>
+										<span className='sing-up-link'>Sing Up</span>
 									</Link>
 								</div>
 							</>) : (<Loading />)}						

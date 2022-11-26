@@ -18,15 +18,15 @@ const Header = () => {
 
 	return (
 		<>
-			<header className="header">
-				<div className="header-container">
-					<div className="header-container-logo"></div>
-					<div className="header-container-wrap">
+			<header className='header'>
+				<div className='header-container'>
+					<div className='header-container-logo'></div>
+					<div className='header-container-wrap'>
 						{isAuth ?
 							<>
-								<div className="header-container-wrap-search"><FontAwesomeIcon icon={ faMagnifyingGlass } /></div>
-								<div className="header-container-wrap-username">{username}</div>
-								<Button onClick={onLogout} className="logout" text="Logout" />
+								<div className='header-container-wrap-search'><FontAwesomeIcon icon={ faMagnifyingGlass } /></div>
+								<div className='header-container-wrap-username'>{username}</div>
+								<Button onClick={onLogout} className='logout' text='Logout' />
 							</>
 						: <div></div>}
 					</div>
