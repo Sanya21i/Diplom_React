@@ -1,6 +1,5 @@
 import React, { InputHTMLAttributes} from 'react';
 
-
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement>{
    value: string;
    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

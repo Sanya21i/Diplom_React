@@ -1,3 +1,4 @@
+import React from 'react';
 import { IBlogPost } from '../../types/blogsTypes';
 import BlogCard from './BlogCard';
 
@@ -6,17 +7,19 @@ interface IBlogList {
 };
 
 const BlogList = ({ blogs }: IBlogList) => {
-	return (
+	return (	
 		<ul>
 			{blogs.map(item => {
 				return (
-					<li>
-						<BlogCard title={item.title} description={item.summary} key={item.id} />
-					</li>					
+					<React.Fragment key={item.id}>
+						<li>
+							<BlogCard title={item.title} description={item.summary}  />
+						</li>	
+					</React.Fragment>
 				)
 			})}
-		</ul>
+		</ul>		
 	)
 };
 
-export default BlogList;
+export default React.memo(BlogList);

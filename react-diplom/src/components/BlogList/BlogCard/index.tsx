@@ -1,3 +1,5 @@
+import React from "react";
+
 interface IBlogCard {
 	title: string;
 	description: string;
@@ -12,4 +14,4 @@ const BlogCard = ({ title, description }: IBlogCard) => {
 	)
 };
 
-export default BlogCard
+export default React.memo(BlogCard);

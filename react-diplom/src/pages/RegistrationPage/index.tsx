@@ -42,8 +42,7 @@ const RegistrationPage = () => {
 	}, [registrationForm]);
 	
 	const isButtonDisabled = useMemo(() => {
-		const formValues = Object.values(registrationForm);
-		
+		const formValues = Object.values(registrationForm);		
 		const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		
 		return !(formValues.filter(item => !!item).length === formValues.length) || !re.test(String(formValues[1]).toLowerCase()) || formValues[2].length <= 8

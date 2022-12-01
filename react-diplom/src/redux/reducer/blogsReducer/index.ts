@@ -1,6 +1,5 @@
 import { IBlogPost } from '../../../types/blogsTypes';
-import { BLOGS_LOADING, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS } from '../../actions/actions';
-
+import { BLOGS_LOADING, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_PAGES_COUNT_SUCCESS, SET_FILTER, SET_PAGE } from '../../actions/actions';
 
 interface IInitialBlogsState {
 	blogs: IBlogPost[];
@@ -28,6 +27,12 @@ const blogsReducer = (state = initialState, action: any) => {
 			return { ...state, blogs: [ ...action.payload ], error: null, currentPage: 1 }
 		case GET_BLOGS_FAILER:
 			return { ...state, error: action.payload }
+		case SET_FILTER:
+			return { ...state, filter: action.payload }
+		case GET_PAGES_COUNT_SUCCESS:
+			return { ...state, pageCount: action.payload }
+		case SET_PAGE:
+			return { ...state, currentPage: action.payload }
 	}
 	return state;
 };

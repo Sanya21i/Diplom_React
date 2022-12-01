@@ -3,7 +3,6 @@ import { AUTH_LOADING, LOGIN, GET_LOGIN_DATA_SUCCESS, GET_LOGIN_DATA_FAILURE, LO
 import { IAuthRequestLoginData, IAuthResponseActivatedUserData } from '../../../types/authTypes';
 
 export const authActionCreators = {
-
    getLogin: (loginData: IAuthRequestLoginData) => {
 		return {
 			type: LOGIN,
