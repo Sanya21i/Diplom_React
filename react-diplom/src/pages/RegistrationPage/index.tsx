@@ -5,6 +5,7 @@ import { registration } from '../../services/authServices';
 import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import './RegistrationPage.scss';
+import { checkEmail } from '../../constants';
 
 const initialRegistrationForm = { username: '', email: '', password: '' };
 
@@ -42,10 +43,10 @@ const RegistrationPage = () => {
 	}, [registrationForm]);
 	
 	const isButtonDisabled = useMemo(() => {
-		const formValues = Object.values(registrationForm);		
-		const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		const formValues = Object.values(registrationForm);
+		let [userName, email, password] = formValues;
 		
-		return !(formValues.filter(item => !!item).length === formValues.length) || !re.test(String(formValues[1]).toLowerCase()) || formValues[2].length <= 8
+		return !(formValues.filter(item => !!item).length === formValues.length) || !checkEmail.test(String(email).toLowerCase()) || password.length <= 8 || userName.length < 3
 	}, [registrationForm]);
 
 	return (

@@ -42,7 +42,7 @@ const Header = () => {
 								<div className='header-container-wrap-username'>{username}</div>
 								<Button onClick={onLogout} className='logout' text='Logout' />
 							</>
-						: <div></div>}
+						: null}
 					</div>
 				</div>
 			</header>

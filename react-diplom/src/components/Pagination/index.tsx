@@ -5,25 +5,12 @@ import { IPaginationProps } from '../../types/blogsTypes';
 import { usePagination } from '../../redux/hooks';
 
 const Pagination = ({ onPageChange, pageCount, siblingCount = 1, currentPage, blogsPageLimit, className }: IPaginationProps) => {
-	let lastPage: number | string;
 	const DOTS = '...';	
-	const paginationRange = usePagination({ pageCount, siblingCount,  currentPage, blogsPageLimit });
-	
-	const onNext = () => {
-		onPageChange(currentPage + 1);
-	};
-		
-	const onPrevious = () => {
-		onPageChange(currentPage - 1);
-	};
-	
-	if (paginationRange) {
-		lastPage = paginationRange[paginationRange.length - 1];
-	}
+	const paginationRange = usePagination({ pageCount, siblingCount,  currentPage, blogsPageLimit });	
 
 	return (
 		<ul className={ classnames('pagination-container', { [className]: className })}>
-			<li className={ classnames('pagination-item', { disabled: currentPage === 1 })} onClick={onPrevious} key='Prev'>
+			<li className={ classnames('pagination-item', { disabled: currentPage <= 1 })} onClick={() => onPageChange(currentPage - 1)} key='Prev'>
 				<div className='arrow left' />
 			</li>
 			<div className='pagination-item-pages'>
@@ -41,12 +28,12 @@ const Pagination = ({ onPageChange, pageCount, siblingCount = 1, currentPage, bl
 				})}
 			</div>
 			<li
-				className={classnames('pagination-item ', { disabled: currentPage === lastPage! })}
-				onClick={onNext} key='Next' >
+				className={classnames('pagination-item ', { disabled: currentPage >= pageCount })}
+				onClick={() => onPageChange(currentPage + 1)} key='Next' >
 				<div className='arrow right' />
 			</li>
 		</ul>
 	);
 };
 
-export default Pagination;
+export default React.memo(Pagination);

@@ -7,6 +7,7 @@ import { authActionCreators } from '../../redux/actions/authActionCreators';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { errorAuthSelector, isLoadingAuthSelector, isAuthAuthSelector } from '../../redux/selectors/authSelectors';
 import Loading from '../../components/Loading';
+import { checkEmail } from '../../constants';
 
 const initialLoginForm = { email: '', password: '' };
 
@@ -37,10 +38,9 @@ const LoginPage = () => {
 
 	const isButtonDisabled = useMemo(() => {
 		const formValues = Object.values(loginForm);
+		let [email, password] = formValues;
 		
-		const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		
-		return !(formValues.filter(item => !!item).length === formValues.length) || !re.test(String(formValues[0]).toLowerCase()) || formValues[1].length <= 8
+		return !(formValues.filter(item => !!item).length === formValues.length) || !checkEmail.test(String(email).toLowerCase()) || password.length <= 8
 	}, [loginForm]);
 
 	return (

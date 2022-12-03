@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
 import { blogsActionCreators } from '../../redux/actions/blogsActionCreators';
@@ -13,9 +13,9 @@ const BlogsPage = () => {
 	const page: number = useAppSelector(currentPageBlogsSelector);
 	const filter = useAppSelector(filterBlogsSelector);
 	
-	const onPageChange = (page: number | string) => {
+	const onPageChange = useCallback((page: number | string) => {
 		dispatch(blogsActionCreators.getBlogsWithPage(page))
-	};
+	}, [dispatch]);
 
 	useEffect(() => {
 		dispatch(blogsActionCreators.getBlogs());

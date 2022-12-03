@@ -16,7 +16,6 @@ const BlogPage = () => {
 		id && dispatch(blogsActionCreators.getIndividBlog(id));
 	}, [dispatch, id]);
 	
-	
 	return (
 		<>
 			<div className='blog-container'>
