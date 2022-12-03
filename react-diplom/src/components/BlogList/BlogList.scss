@@ -1,0 +1,13 @@
+.wrapper-blogs {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: flex-start;
+	align-self: flex-start;
+	justify-content: space-between;
+	margin-bottom: 32px;
+	
+	& li {
+		list-style-type: none;
+	}
+}

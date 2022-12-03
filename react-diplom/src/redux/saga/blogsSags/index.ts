@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
-import { getBlogs, getPagesCount } from '../../../services/blogsServices';
+import { getBlogs, getIndividBlog, getPagesCount } from '../../../services/blogsServices';
 import { IBlogPost, IBlogsResponsePagesCount } from '../../../types/blogsTypes';
-import { GET_BLOGS, GET_BLOGS_WITH_FILTER, GET_BLOGS_WITH_PAGE, GET_PAGES_COUNT } from '../../actions/actions';
+import { GET_BLOGS, GET_BLOGS_WITH_FILTER, GET_BLOGS_WITH_PAGE, GET_INDIVID_BLOG, GET_PAGES_COUNT } from '../../actions/actions';
 import { blogsActionCreators } from '../../actions/blogsActionCreators';
 import { currentPageBlogsSelector, filterBlogsSelector } from '../../selectors/blogsSelectors';
 
@@ -46,13 +46,29 @@ function* fetchPagesCount() {
 	} finally {
       yield put(blogsActionCreators.setBlogsLoading(false)); 
 	}
-}
+};
+
+function* fetchIndividBlog({ payload }: ReturnType<typeof blogsActionCreators.getIndividBlog>) {
+	try {
+		yield put(blogsActionCreators.setBlogsLoading(true));
+
+		const response: AxiosResponse<IBlogPost> = yield call(getIndividBlog, payload);
+		if (response.data && response.status === 200) {
+			yield put(blogsActionCreators.getIndividBlogSuccess(response.data));
+		}
+	} catch (e: any) {
+		yield put(blogsActionCreators.getBlogsFailure(e?.response?.data?.detail));
+	} finally {
+		yield put(blogsActionCreators.setBlogsLoading(false));
+	}
+};
 
 export function* watchBlogsSaga() {
 	yield all([
 		takeLatest(GET_BLOGS, fetchBlogs),
 		takeLatest(GET_BLOGS_WITH_FILTER, fetchBlogsWithFilter),
 		takeLatest(GET_PAGES_COUNT, fetchPagesCount),
-		takeLatest(GET_BLOGS_WITH_PAGE, fetchBlogsWithPage)
+		takeLatest(GET_BLOGS_WITH_PAGE, fetchBlogsWithPage),
+		takeLatest(GET_INDIVID_BLOG, fetchIndividBlog),
 	])
 }

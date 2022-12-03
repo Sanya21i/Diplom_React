@@ -4,10 +4,10 @@ import { accountActivation } from '../../services/authServices';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button'; 
 import Loading from '../../components/Loading';
+import './ActivationPage.scss'
 
 const ActivationPage = () => {
 	const { uid, id } = useParams();
-
 	const [isActivated, setIsActivated] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,6 @@ const ActivationPage = () => {
 					setIsLoading(false);
 				}
 			};
-
 			activateAccount()
 		}
 	}, [uid, id]);
@@ -37,10 +36,10 @@ const ActivationPage = () => {
 		<>
 			{
 				isActivated ? (
-					<div>
-						<p>Your account is successfully activated!</p>
+					<div className='activation-container'>
+						<h3>Your account is successfully activated!</h3>
 						<Link to='/login'>
-							<Button text='Go to the login page' />
+							<Button className='s1-p' text='Go to the login page' />
 						</Link>
 					</div>
 				) : (

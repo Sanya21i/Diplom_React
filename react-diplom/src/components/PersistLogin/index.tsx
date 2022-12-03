@@ -10,16 +10,14 @@ import { Navigate, Outlet } from 'react-router';
 const PersistLogin = () => {
 	const token = localStorage.getItem('accessToken');
 	
-	const isAuth = useAppSelector(isAuthAuthSelector);
-	
+	const isAuth = useAppSelector(isAuthAuthSelector);	
 	const dispatch = useAppDispatch();
 	
 	useEffect(() => {
 		if (token) {
 			const getAuthUserData = async () => {
 				try {
-					const userData: AxiosResponse<IAuthResponseActivatedUserData> = await getAuthorizedUserInfo();
-					
+					const userData: AxiosResponse<IAuthResponseActivatedUserData> = await getAuthorizedUserInfo();					
 					dispatch(authActionCreators.getLoginDataSuccess({ ...userData.data }));
 				} catch (e) {
 					console.error(e)

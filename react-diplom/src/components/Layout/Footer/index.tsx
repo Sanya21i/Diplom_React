@@ -10,7 +10,6 @@ const Footer = () => {
 						<div className='footer-container-wrap-text'>
 							<p>&copy;2022 Blogolog</p>
 						</div>
-
 						<div className='footer-container-wrap-switcher'>Switch</div>
 					</div>
 				</div>

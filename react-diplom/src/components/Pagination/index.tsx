@@ -6,8 +6,7 @@ import { usePagination } from '../../redux/hooks';
 
 const Pagination = ({ onPageChange, pageCount, siblingCount = 1, currentPage, blogsPageLimit, className }: IPaginationProps) => {
 	let lastPage: number | string;
-	const DOTS = '...';
-	
+	const DOTS = '...';	
 	const paginationRange = usePagination({ pageCount, siblingCount,  currentPage, blogsPageLimit });
 	
 	const onNext = () => {
@@ -23,11 +22,8 @@ const Pagination = ({ onPageChange, pageCount, siblingCount = 1, currentPage, bl
 	}
 
 	return (
-		<ul
-			className={classnames('pagination-container', { [className]: className })}
-		>
-			<li className={classnames('pagination-item pagination-item-arrow-start', { disabled: currentPage === 1, })} onClick={onPrevious} key='Prev'
-			>
+		<ul className={ classnames('pagination-container', { [className]: className })}>
+			<li className={ classnames('pagination-item', { disabled: currentPage === 1 })} onClick={onPrevious} key='Prev'>
 				<div className='arrow left' />
 			</li>
 			<div className='pagination-item-pages'>
@@ -38,7 +34,7 @@ const Pagination = ({ onPageChange, pageCount, siblingCount = 1, currentPage, bl
 						);
 					}
 					return (
-						<li className={ classnames('pagination-item', { selected: pageNumber === currentPage })} key={pageNumber} onClick={() => onPageChange(pageNumber) } >
+						<li className={ classnames('pagination-item', { selected: pageNumber === currentPage })} key={pageNumber} onClick={() => onPageChange(pageNumber) }>
 							{pageNumber}
 						</li>
 					);

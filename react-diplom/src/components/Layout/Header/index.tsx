@@ -9,10 +9,11 @@ import { authActionCreators } from '../../../redux/actions/authActionCreators';
 import Input from '../../Input';
 import { blogsActionCreators } from '../../../redux/actions/blogsActionCreators';
 
+
 const Header = () => {
 	const { username } = useAppSelector(dataAuthSelector);
 	const isAuth = useAppSelector(isAuthAuthSelector);
-	const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();	
 
 	const [searchForm, setSearchForm] = useState({ searchText: '' })
 
@@ -33,8 +34,8 @@ const Header = () => {
 							<>
 								<form onSubmit={(e) => {
 									e.preventDefault();
-									dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))
-								}}>
+									dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))									
+								}}>									
 									<Input value={searchForm.searchText} fieldName='searchText' onChange={onSearchTextChange} />
 								</form>
 								<div className='header-container-wrap-search'><FontAwesomeIcon icon={ faMagnifyingGlass } /></div>

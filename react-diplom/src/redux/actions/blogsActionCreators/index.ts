@@ -1,6 +1,6 @@
 import { IBlogPost } from '../../../types/blogsTypes';
 import { InferActionType } from '../../store';
-import { BLOGS_LOADING, GET_BLOGS, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_BLOGS_WITH_FILTER, GET_PAGES_COUNT, GET_PAGES_COUNT_SUCCESS, SET_FILTER, GET_BLOGS_WITH_PAGE, SET_PAGE } from '../actions';
+import { BLOGS_LOADING, GET_BLOGS, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_BLOGS_WITH_FILTER, GET_PAGES_COUNT, GET_PAGES_COUNT_SUCCESS, SET_FILTER, GET_BLOGS_WITH_PAGE, SET_PAGE, GET_INDIVID_BLOG, GET_INDIVID_BLOG_SUCCESS } from '../actions';
 
 export const blogsActionCreators = {
    getBlogs: () => {
@@ -9,6 +9,13 @@ export const blogsActionCreators = {
 		} 
 	},	
 
+	getIndividBlog: ( id : string) => {
+		return {
+			type: GET_INDIVID_BLOG,
+			payload: { id }
+		};
+	},
+	
 	setPagesCount: () => {
 		return {
 			type: GET_PAGES_COUNT,
@@ -27,6 +34,13 @@ export const blogsActionCreators = {
 			type: GET_BLOGS_SUCCESS,
 			payload: blogs,
 		}
+	},
+
+	getIndividBlogSuccess: (blog: IBlogPost) => {
+		return {
+			type: GET_INDIVID_BLOG_SUCCESS,
+			payload: blog,
+		};
 	},
 
 	getBlogsFailure: (error: string) => {

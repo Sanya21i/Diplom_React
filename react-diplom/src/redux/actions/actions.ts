@@ -14,3 +14,5 @@ export const GET_BLOGS_WITH_FILTER = 'GET_BLOGS_WITH_FILTER' as const;
 export const SET_FILTER = 'SET_FILTER' as const;
 export const GET_BLOGS_WITH_PAGE = 'GET_BLOGS_WITH_PAGE' as const;
 export const SET_PAGE = 'SET_PAGE' as const;
+export const GET_INDIVID_BLOG = 'GET_INDIVID_BLOG' as const;
+export const GET_INDIVID_BLOG_SUCCESS = 'GET_BLOG_SUCCESS' as const;

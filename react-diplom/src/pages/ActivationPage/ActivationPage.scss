@@ -1,0 +1,15 @@
+.activation-container {
+	width: 1120px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin: auto;
+	
+	& Button {
+		width: 250px;
+		height: 100px;
+		margin: auto;
+		background-color: #6C1BDB;
+		border-radius: 4px;
+	}
+}
