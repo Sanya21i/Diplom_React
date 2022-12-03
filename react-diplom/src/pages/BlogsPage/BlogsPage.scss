@@ -1,0 +1,12 @@
+.blogs-container {
+	width: 1120px;
+	margin: auto;
+	&-title {
+		margin: 72px 0 40px;
+	}
+	.pagination-blogs {
+		margin-bottom: 72px;
+		display: flex;
+		justify-content: space-between;
+	}
+}
