@@ -1,11 +1,11 @@
 import { IBlogPost } from '../../../types/blogsTypes';
 import { InferActionType } from '../../store';
-import { BLOGS_LOADING, GET_BLOGS, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_BLOGS_WITH_FILTER, GET_PAGES_COUNT, GET_PAGES_COUNT_SUCCESS, SET_FILTER, GET_BLOGS_WITH_PAGE, SET_PAGE, GET_INDIVID_BLOG, GET_INDIVID_BLOG_SUCCESS } from '../actions';
+import { BLOGS_LOADING, GET_BLOGS, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_BLOGS_WITH_FILTER, GET_PAGES_COUNT, GET_PAGES_COUNT_SUCCESS, SET_FILTER, GET_BLOGS_WITH_PAGE, SET_PAGE, GET_INDIVID_BLOG, GET_INDIVID_BLOG_SUCCESS, SET_SORT, GET_BLOGS_WITH_SORT } from '../actions';
 
 export const blogsActionCreators = {
-   getBlogs: () => {
+	getBlogs: () => {
 		return {
-			type: GET_BLOGS,
+			type: GET_BLOGS,			
 		} 
 	},	
 
@@ -70,6 +70,20 @@ export const blogsActionCreators = {
 			payload: filter,
 		}
 	},
+
+	setBlogsSort: (sort: string) => {
+		return {
+			type: SET_SORT,
+			payload: sort,
+		}
+	},
+
+	getBlogsWithSort: (sort: string) => {
+		return {
+			type: GET_BLOGS_WITH_SORT,
+			payload: sort,
+		}
+	},	
 	
 	getBlogsWithPage: (page: number | string) => {
 		return {

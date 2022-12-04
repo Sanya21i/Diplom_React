@@ -1,9 +1,18 @@
 .blogs-container {
 	width: 1120px;
 	margin: auto;
+
 	&-title {
 		margin: 72px 0 40px;
 	}
+
+	&-select {
+		display: flex;
+		justify-content: flex-end;
+		margin: 64px 0;
+		
+	}
+	
 	.pagination-blogs {
 		margin-bottom: 72px;
 		display: flex;
