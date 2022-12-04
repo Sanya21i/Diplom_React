@@ -1,7 +1,80 @@
 .select {
-	width: 256px;
+	display: flex;
+	position: relative;
 	height: 56px;
-	padding: 16px 24px;
-	border: none;
-	border-radius: 4px;
+	
+	
+	&-wrap {
+		display: flex;
+		justify-content: space-between;
+		width: 250px;
+		align-items:center;
+		background: #FFFFFF;
+		color: rgba(49, 48, 55, 1);
+		padding: 0 10px;
+		&:hover {
+			border: 1px solid #6C1BDB;
+		}
+		
+		cursor: pointer;
+		
+
+		&::before {
+			content: 'Sort:';			
+			color: rgba(49, 48, 55, 0.5);
+		}
+
+		.arrow-up {
+			position: relative;
+			content: '';
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-right: 2px solid rgba(49, 48, 55, 1);
+			border-top: 2px solid rgba(49, 48, 55, 1);
+			transform: rotate(315deg) translate(-40%, 40%);
+		}
+		.arrow-down {
+			position: relative;
+			content: '';
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-right: 2px solid rgba(49, 48, 55, 0.5);
+			border-top: 2px solid rgba(49, 48, 55, 0.5);
+			transform: rotate(134deg);
+			&:hover {
+				border-right: 2px solid rgba(49, 48, 55, 1);
+				border-top: 2px solid rgba(49, 48, 55, 1);
+			}
+		}
+	}
+	&-dropdown {
+		width: 250px;
+		position: absolute;
+		top: 110%;
+		background: #FFFFFF;
+		color: rgba(49, 48, 55, 1);
+		z-index: 1;
+		border-radius: 4px;
+		&-wrap {
+			padding: 0;
+			margin: auto;
+			
+
+			&-item {
+				border: 1px solid rgba(49, 48, 55, 0.5);
+				padding: 10px;
+				height: 45px;
+				cursor: pointer;
+				&:hover {
+					color: #6C1BDB;
+				}
+				
+				&.active {
+					color: rgba(49, 48, 55, 0.5);
+				}
+			}
+		}
+	}
 }

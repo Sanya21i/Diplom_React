@@ -14,7 +14,7 @@ body {
 	background-color: #E5E5E5;
 }
 
-a {
+a, li, ul {
 	text-decoration: none;
 
 	&:focus, &:hover, &:visited, &:link, &:active {

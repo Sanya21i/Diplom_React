@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
 import Select from '../../components/Select';
+import { OPTIONS } from '../../constants';
 import { blogsActionCreators } from '../../redux/actions/blogsActionCreators';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { blogsPostsBlogsSelector, currentPageBlogsSelector, filterBlogsSelector, pagesCountBlogsSelector } from '../../redux/selectors/blogsSelectors';
@@ -13,23 +14,17 @@ const BlogsPage = () => {
 	const blogs = useAppSelector(blogsPostsBlogsSelector);
 	const pagesCount = useAppSelector(pagesCountBlogsSelector);
 	const page: number = useAppSelector(currentPageBlogsSelector);
-	const filter = useAppSelector(filterBlogsSelector);	
+	const filter = useAppSelector(filterBlogsSelector);
 	
-	const OPTIONS = [		
-		{ label: 'Clear sort', value: '' },
-		{ label: 'Title (A-Z)', value: 'title' },
-		{ label: 'Description (A-Z)', value: 'summary' },
-	];
 	
-	const [sortItem, setSortItem] = useState(OPTIONS[0].value);
+	
 
 	const onPageChange = useCallback((page: number | string) => {
 		dispatch(blogsActionCreators.getBlogsWithPage(page))
 	}, [dispatch]);
 
-	const onSortItemChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setSortItem(e.target.value);
-		dispatch(blogsActionCreators.getBlogsWithSort(e.target.value))
+	const onSortItemChange = (sortItem: string) => {
+		dispatch(blogsActionCreators.getBlogsWithSort(sortItem))
 	}
 
 	useEffect(() => {
@@ -54,7 +49,7 @@ const BlogsPage = () => {
 							</Link>
 						</div>
 						<div className='blogs-container-select'>
-							<Select options={OPTIONS} value={sortItem} onChange={onSortItemChange} />
+							<Select options={OPTIONS} onChange={(sortItem) => onSortItemChange(sortItem)} />
 						</div>						
 						<BlogList items={blogs} />
 						<Pagination
