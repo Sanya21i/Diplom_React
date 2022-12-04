@@ -29,26 +29,26 @@ const BlogPage = () => {
 					<h1>{blog.title}</h1>
 				</div>
 				<div className='blog-container-img'>
-					<img src={`${blog.imageUrl}`} alt=''/>
+					<img src={`${blog.imageUrl}`} alt='' />
 				</div>
 				<div className='blog-container-text b1-p'>{blog.summary}</div>
 				<div className='blog-container-social'>
 					<div className='blog-container-social-facebook'>
 						<a href='https://www.facebook.com/'>
-							<FontAwesomeIcon icon={ faFacebookF } />
+							<FontAwesomeIcon icon={faFacebookF} />
 						</a>
 					</div>
 					<div className='blog-container-social-twitter'>
 						<a href='https://www.twitter.com/'>
-							<FontAwesomeIcon icon={ faSquareTwitter } />
+							<FontAwesomeIcon icon={faSquareTwitter} />
 						</a>
-					</div>	
+					</div>
 				</div>
 				<div className='blog-container-blogs'></div>
-			</div>			
-		</>		
+			</div>
+		</>
 	)
-}
+};
 
 export default BlogPage;
 

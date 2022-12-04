@@ -78,4 +78,4 @@ export function* watchBlogsSaga() {
 		takeLatest(GET_BLOGS_WITH_SORT, fetchBlogsWithSort),
 		takeLatest(GET_INDIVID_BLOG, fetchIndividBlog),
 	])
-}
+};

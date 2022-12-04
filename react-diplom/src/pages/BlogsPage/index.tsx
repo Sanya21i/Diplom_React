@@ -13,7 +13,7 @@ const BlogsPage = () => {
 	const blogs = useAppSelector(blogsPostsBlogsSelector);
 	const pagesCount = useAppSelector(pagesCountBlogsSelector);
 	const page: number = useAppSelector(currentPageBlogsSelector);
-	const filter = useAppSelector(filterBlogsSelector);
+	const filter = useAppSelector(filterBlogsSelector);	
 	
 	const OPTIONS = [		
 		{ label: 'Clear sort', value: '' },
@@ -47,7 +47,7 @@ const BlogsPage = () => {
 							<div className='blogs-container-wrapper-articles'>
 								<span className='s1'>Articles</span>							
 							</div>							
-							<Link to='/articles'>
+							<Link to='/news'>
 								<div className='blogs-container-wrapper-news'>
 									<span className='s1'>News</span>
 								</div>
@@ -56,7 +56,7 @@ const BlogsPage = () => {
 						<div className='blogs-container-select'>
 							<Select options={OPTIONS} value={sortItem} onChange={onSortItemChange} />
 						</div>						
-						<BlogList blogs={blogs} />
+						<BlogList items={blogs} />
 						<Pagination
 							currentPage={page}
 							pageCount={pagesCount}
@@ -69,7 +69,7 @@ const BlogsPage = () => {
 				) : (
 					<>
 						<h1 className='blogs-container-search'>Search results ‘{ filter }’</h1>
-						<BlogList blogs={blogs} />
+						<BlogList items={blogs} />
 						<Pagination
 							currentPage={page}
 							pageCount={pagesCount}

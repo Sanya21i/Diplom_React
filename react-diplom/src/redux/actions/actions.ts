@@ -20,3 +20,11 @@ export const GET_INDIVID_BLOG = 'GET_INDIVID_BLOG' as const;
 export const GET_INDIVID_BLOG_SUCCESS = 'GET_BLOG_SUCCESS' as const;
 export const SET_SORT = 'SET_SORT' as const;
 export const GET_BLOGS_WITH_SORT = 'GET_BLOGS_WITH_SORT' as const;
+
+//news
+export const GET_NEWS = 'GET_NEWS' as const;
+export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS' as const;
+export const GET_NEWS_FAILER = 'GET_NEWS_FAILER' as const;
+export const NEWS_LOADING = 'NEWS_LOADING' as const;
+export const GET_INDIVID_NEW = 'GET_INDIVID_NEW' as const;
+export const GET_INDIVID_NEWS_SUCCESS = 'GET_INDIVID_NEWS_SUCCESS' as const; 
