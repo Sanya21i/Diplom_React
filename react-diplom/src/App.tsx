@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import PersistLogin from './components/PersistLogin';
 import BlogsPage from './pages/BlogsPage';
 import BlogPage from './pages/BlogPage';
+import ArticlesPage from './pages/ArticlesPage';
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 				<Route path='/activate/:uid/:id' element={<ActivationPage />} />
 				<Route element={<PersistLogin />} >
 					<Route path='/main' element={<BlogsPage />} />
+					<Route path='/articles' element={<ArticlesPage />} />
 					<Route path='/blogs/:id' element={<BlogPage />} />
 				</Route>
 			</Route>

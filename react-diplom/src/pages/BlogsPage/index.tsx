@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
 import Select from '../../components/Select';
@@ -20,7 +21,7 @@ const BlogsPage = () => {
 		{ label: 'Description (A-Z)', value: 'summary' },
 	];
 	
-	const [sortItem, setSortItem] = useState(OPTIONS[0].value)
+	const [sortItem, setSortItem] = useState(OPTIONS[0].value);
 
 	const onPageChange = useCallback((page: number | string) => {
 		dispatch(blogsActionCreators.getBlogsWithPage(page))
@@ -42,6 +43,16 @@ const BlogsPage = () => {
 				{!filter ? (
 					<>
 						<h1 className='blogs-container-title'>Blog</h1>
+						<div className='blogs-container-wrapper'>
+							<div className='blogs-container-wrapper-articles'>
+								<span className='s1'>Articles</span>							
+							</div>							
+							<Link to='/articles'>
+								<div className='blogs-container-wrapper-news'>
+									<span className='s1'>News</span>
+								</div>
+							</Link>
+						</div>
 						<div className='blogs-container-select'>
 							<Select options={OPTIONS} value={sortItem} onChange={onSortItemChange} />
 						</div>						

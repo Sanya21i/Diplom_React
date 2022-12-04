@@ -6,6 +6,36 @@
 		margin: 72px 0 40px;
 	}
 
+	&-wrapper {
+		display: flex;
+		border-bottom: 1px solid rgba(49, 48, 55, 0.1);
+		
+		&-articles {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 0px 40px 24px;
+			width: 141px;
+			height: 48px;
+			border-bottom: 1px solid rgba(49, 48, 55, 1) ;
+		}
+
+		&-news {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 0px 40px 24px;
+			width: 141px;
+			height: 48px;
+			cursor: pointer;
+			& :hover {
+				color: #6C1BDB;
+			}
+			
+		}
+	}
 	&-select {
 		display: flex;
 		justify-content: flex-end;
