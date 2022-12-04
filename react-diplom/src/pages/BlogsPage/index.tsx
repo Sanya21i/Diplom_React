@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import BlogList from '../../components/BlogList';
 import Pagination from '../../components/Pagination';
+import Select from '../../components/Select';
+import { OPTIONS } from '../../constants';
 import { blogsActionCreators } from '../../redux/actions/blogsActionCreators';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { blogsPostsBlogsSelector, currentPageBlogsSelector, filterBlogsSelector, pagesCountBlogsSelector } from '../../redux/selectors/blogsSelectors';
@@ -13,9 +16,16 @@ const BlogsPage = () => {
 	const page: number = useAppSelector(currentPageBlogsSelector);
 	const filter = useAppSelector(filterBlogsSelector);
 	
+	
+	
+
 	const onPageChange = useCallback((page: number | string) => {
 		dispatch(blogsActionCreators.getBlogsWithPage(page))
 	}, [dispatch]);
+
+	const onSortItemChange = (sortItem: string) => {
+		dispatch(blogsActionCreators.getBlogsWithSort(sortItem))
+	}
 
 	useEffect(() => {
 		dispatch(blogsActionCreators.getBlogs());
@@ -28,7 +38,20 @@ const BlogsPage = () => {
 				{!filter ? (
 					<>
 						<h1 className='blogs-container-title'>Blog</h1>
-						<BlogList blogs={blogs} />
+						<div className='blogs-container-wrapper'>
+							<div className='blogs-container-wrapper-articles'>
+								<span className='s1'>Articles</span>							
+							</div>							
+							<Link to='/news'>
+								<div className='blogs-container-wrapper-news'>
+									<span className='s1'>News</span>
+								</div>
+							</Link>
+						</div>
+						<div className='blogs-container-select'>
+							<Select options={OPTIONS} onChange={(sortItem) => onSortItemChange(sortItem)} />
+						</div>						
+						<BlogList items={blogs} />
 						<Pagination
 							currentPage={page}
 							pageCount={pagesCount}
@@ -41,7 +64,7 @@ const BlogsPage = () => {
 				) : (
 					<>
 						<h1 className='blogs-container-search'>Search results ‘{ filter }’</h1>
-						<BlogList blogs={blogs} />
+						<BlogList items={blogs} />
 						<Pagination
 							currentPage={page}
 							pageCount={pagesCount}

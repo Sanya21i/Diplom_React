@@ -1,4 +1,4 @@
-.blogs-container {
+.news-container {
 	width: 1120px;
 	margin: auto;
 
@@ -18,7 +18,10 @@
 			padding: 0px 40px 24px;
 			width: 141px;
 			height: 48px;
-			border-bottom: 1px solid rgba(49, 48, 55, 1);
+			cursor: pointer;
+			& :hover {
+				color: #6C1BDB;
+			}
 		}
 
 		&-news {
@@ -29,11 +32,7 @@
 			padding: 0px 40px 24px;
 			width: 141px;
 			height: 48px;
-			cursor: pointer;
-
-			& :hover {
-				color: #6C1BDB;
-			}			
+			border-bottom: 1px solid rgba(49, 48, 55, 1);			
 		}
 	}
 

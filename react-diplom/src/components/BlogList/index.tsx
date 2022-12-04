@@ -3,14 +3,14 @@ import { IBlogPost } from '../../types/blogsTypes';
 import BlogCard from './BlogCard';
 import './BlogList.scss';
 
-interface IBlogList {
-	blogs: IBlogPost[];
+interface IItemList {
+	items: IBlogPost[];
 };
 
-const BlogList = ({ blogs }: IBlogList) => {	
+const BlogList = ({ items }: IItemList) => {	
 	return (	
 		<ul className='wrapper-blogs'>
-			{blogs.map(item => {				
+			{items.map(item => {				
 				return (
 					<React.Fragment key={item.id}>
 						<li>							

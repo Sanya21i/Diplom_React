@@ -1,22 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './BlogCard.scss';
+import './NewsCard.scss';
 
-interface IBlogCard {
+interface INewsCard {
 	imgUrl: string;
 	publishedAt: string;
 	title: string;
 	id: number
 };
 
-const BlogCard = ({ imgUrl, publishedAt, title, id }: IBlogCard) => {	
+const NewsCard = ({ imgUrl, publishedAt, title, id }: INewsCard) => {	
 	return (
 		<>
 			<div className='wrapper'>
 				<div><img src={imgUrl} alt='' /></div>
 				<div className='wrapper-text'>
 					<p className='s1'>{publishedAt}</p>
-					<NavLink to={'/blog/' + id}>
+					<NavLink to={'/news/' + id}>
 						<h3 className='wrapper-text-title'>{title}</h3>
 					</NavLink>
 				</div>
@@ -25,4 +25,4 @@ const BlogCard = ({ imgUrl, publishedAt, title, id }: IBlogCard) => {
 	)
 };
 
-export default React.memo(BlogCard);
+export default React.memo(NewsCard);

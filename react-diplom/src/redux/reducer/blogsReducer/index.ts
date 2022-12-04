@@ -1,5 +1,5 @@
 import { IBlogPost } from '../../../types/blogsTypes';
-import { BLOGS_LOADING, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_INDIVID_BLOG_SUCCESS, GET_PAGES_COUNT_SUCCESS, SET_FILTER, SET_PAGE } from '../../actions/actions';
+import { BLOGS_LOADING, GET_BLOGS_FAILER, GET_BLOGS_SUCCESS, GET_INDIVID_BLOG_SUCCESS, GET_PAGES_COUNT_SUCCESS, SET_FILTER, SET_PAGE, SET_SORT } from '../../actions/actions';
 
 interface IInitialBlogsState {
 	blogs: IBlogPost[];
@@ -8,6 +8,7 @@ interface IInitialBlogsState {
 	filter: string;
 	currentPage: number;
 	pageCount: number;
+	sort: string;
 }
 
 const initialState: IInitialBlogsState = {
@@ -16,7 +17,8 @@ const initialState: IInitialBlogsState = {
 	error: null,
 	filter: '',
 	currentPage: 1,
-	pageCount: 0
+	pageCount: 0,
+	sort: 'id',
 }
 
 const blogsReducer = (state = initialState, action: any) => {
@@ -29,6 +31,8 @@ const blogsReducer = (state = initialState, action: any) => {
 			return { ...state, error: action.payload }
 		case SET_FILTER:
 			return { ...state, filter: action.payload }
+		case SET_SORT:
+			return { ...state, sort: action.payload }
 		case GET_PAGES_COUNT_SUCCESS:
 			return { ...state, pageCount: action.payload }
 		case SET_PAGE:

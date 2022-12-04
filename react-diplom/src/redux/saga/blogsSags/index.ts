@@ -2,17 +2,18 @@ import { AxiosResponse } from 'axios';
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import { getBlogs, getIndividBlog, getPagesCount } from '../../../services/blogsServices';
 import { IBlogPost, IBlogsResponsePagesCount } from '../../../types/blogsTypes';
-import { GET_BLOGS, GET_BLOGS_WITH_FILTER, GET_BLOGS_WITH_PAGE, GET_INDIVID_BLOG, GET_PAGES_COUNT } from '../../actions/actions';
+import { GET_BLOGS, GET_BLOGS_WITH_FILTER, GET_BLOGS_WITH_PAGE, GET_INDIVID_BLOG, GET_PAGES_COUNT, GET_BLOGS_WITH_SORT } from '../../actions/actions';
 import { blogsActionCreators } from '../../actions/blogsActionCreators';
-import { currentPageBlogsSelector, filterBlogsSelector } from '../../selectors/blogsSelectors';
+import { currentPageBlogsSelector, filterBlogsSelector, sortBlogsSelector } from '../../selectors/blogsSelectors';
 
 function* fetchBlogs() {
 	try {
 		yield put(blogsActionCreators.setBlogsLoading(true));
 		const filter: string = yield select(filterBlogsSelector);
 		const page: number = yield select(currentPageBlogsSelector);
+		const sort: string = yield select(sortBlogsSelector);
       
-		const response: AxiosResponse<IBlogPost[]> = yield call(getBlogs, { filter, page });
+		const response: AxiosResponse<IBlogPost[]> = yield call(getBlogs, { filter, page, sort });
 		if (response.data && response.status === 200) {
 			yield put(blogsActionCreators.getBlogsSuccess(response.data));
 		}
@@ -30,6 +31,11 @@ function* fetchBlogsWithFilter({ payload }: ReturnType<typeof blogsActionCreator
 
 function* fetchBlogsWithPage({ payload }: ReturnType<typeof blogsActionCreators.getBlogsWithPage>) {
 	yield put(blogsActionCreators.setBlogsPage(payload));
+	yield fetchBlogs();   
+};
+
+function* fetchBlogsWithSort({ payload }: ReturnType<typeof blogsActionCreators.getBlogsWithSort>) {
+	yield put(blogsActionCreators.setBlogsSort(payload));
 	yield fetchBlogs();   
 };
 
@@ -69,6 +75,7 @@ export function* watchBlogsSaga() {
 		takeLatest(GET_BLOGS_WITH_FILTER, fetchBlogsWithFilter),
 		takeLatest(GET_PAGES_COUNT, fetchPagesCount),
 		takeLatest(GET_BLOGS_WITH_PAGE, fetchBlogsWithPage),
+		takeLatest(GET_BLOGS_WITH_SORT, fetchBlogsWithSort),
 		takeLatest(GET_INDIVID_BLOG, fetchIndividBlog),
 	])
-}
+};

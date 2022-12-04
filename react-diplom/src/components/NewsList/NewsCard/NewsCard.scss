@@ -1,0 +1,22 @@
+.wrapper {
+	width: 352px;
+	height: 388px;
+	background: #FFFFFF;
+	border-radius: 16px;
+	margin-bottom: 40px;
+
+	& img {
+		width: 352px;
+		height: 208px;
+		border-radius: 16px;
+	}
+
+	&-text {
+		padding: 32px;
+		
+		& p {
+			margin-bottom: 8px;
+			color: rgba(49, 48, 55, 0.5);
+		}
+	}
+}

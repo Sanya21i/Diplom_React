@@ -13,3 +13,11 @@ body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquot
 body {
 	background-color: #E5E5E5;
 }
+
+a, li, ul {
+	text-decoration: none;
+
+	&:focus, &:hover, &:visited, &:link, &:active {
+		text-decoration: none;
+	}
+}
