@@ -22,7 +22,6 @@ const Select = ({ options, onChange }: ISelectProps) => {
 		switching();
 	};
 	return (
-
 		<>
 			<div className='select'>
 				<div className='select-wrap s1' onClick={switching}>

@@ -26,7 +26,7 @@ const blogsReducer = (state = initialState, action: any) => {
 		case BLOGS_LOADING:
 			return { ...state, isLoading: action.payload }
 		case GET_BLOGS_SUCCESS:
-			return { ...state, blogs: [ ...action.payload ], error: null }
+			return { ...state, blogs: [...action.payload], error: null }
 		case GET_BLOGS_FAILER:
 			return { ...state, error: action.payload }
 		case SET_FILTER:
@@ -38,7 +38,7 @@ const blogsReducer = (state = initialState, action: any) => {
 		case SET_PAGE:
 			return { ...state, currentPage: action.payload }
 		case GET_INDIVID_BLOG_SUCCESS:
-			return { ...state, blogs: [{...action.payload}], error: null }
+			return { ...state, blogs: [{ ...action.payload }], error: null }
 	}
 	return state;
 };

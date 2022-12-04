@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import './Pagination.scss';
-import { IPaginationProps } from '../../types/blogsTypes';
+import { IPaginationProps } from '../../types/paginationTypes';
 import { usePagination } from '../../redux/hooks';
 
 const Pagination = ({ onPageChange, pageCount, siblingCount = 1, currentPage, blogsPageLimit, className }: IPaginationProps) => {

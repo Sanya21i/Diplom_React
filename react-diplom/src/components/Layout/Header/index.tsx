@@ -8,7 +8,7 @@ import Button from '../../Button';
 import { authActionCreators } from '../../../redux/actions/authActionCreators';
 import Input from '../../Input';
 import { blogsActionCreators } from '../../../redux/actions/blogsActionCreators';
-
+import { newsActionCreators } from '../../../redux/actions/newsActionCreators';
 
 const Header = () => {
 	const { username } = useAppSelector(dataAuthSelector);
@@ -34,7 +34,8 @@ const Header = () => {
 							<>
 								<form onSubmit={(e) => {
 									e.preventDefault();
-									dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))									
+									dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText));
+									dispatch(newsActionCreators.getNewsWithFilter(searchForm.searchText));
 								}}>									
 									<Input value={searchForm.searchText} fieldName='searchText' onChange={onSearchTextChange} />
 								</form>

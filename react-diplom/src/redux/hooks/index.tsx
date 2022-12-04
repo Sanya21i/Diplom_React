@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { IUsePaginationProps } from '../../types/blogsTypes';
+import { IUsePaginationProps } from '../../types/paginationTypes';
 import { AppDispatch, RootState } from '../store';
 
 export const useAppDispatch: () => AppDispatch = useDispatch;

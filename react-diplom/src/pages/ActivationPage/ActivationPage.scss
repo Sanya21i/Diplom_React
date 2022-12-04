@@ -1,9 +1,12 @@
 .activation-container {
 	width: 1120px;
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
-	margin: auto;
+	
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		margin: 30px auto 0;
+	}
 	
 	& Button {
 		width: 250px;

@@ -20,3 +20,5 @@ export interface INewsPost{
 		}
 	]
 };
+
+export type INewsResponsePagesCount = number;

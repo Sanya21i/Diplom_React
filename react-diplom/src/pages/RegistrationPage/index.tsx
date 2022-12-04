@@ -53,11 +53,10 @@ const RegistrationPage = () => {
 		<>
 			{
 				isRegistered ? (
-
 					<div className='error-items'>
 						<div className='error-items-container'>
 							<div className='error-items-container-wrap'>
-								<h2>Pleaes check email to verify your account!</h2>
+								<h2>Please check email to verify your account!</h2>
 								<Link to='/login'>
 									<Button text='Go to the login page' />
 								</Link>

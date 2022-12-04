@@ -37,16 +37,18 @@ const ActivationPage = () => {
 			{
 				isActivated ? (
 					<div className='activation-container'>
-						<h3>Your account is successfully activated!</h3>
-						<Link to='/login'>
-							<Button className='s1-p' text='Go to the login page' />
-						</Link>
+						<div className='activation-container-wrapper'>
+							<h2>Your account is successfully activated!</h2>
+							<Link to='/login'>
+								<Button className='b1-p' text='Go to the login page' />
+							</Link>
+						</div>						
 					</div>
 				) : (
 					<>
 						{!isLoading ? (
 							<>
-								<div className='container'>
+								<div className='container-error-activation'>
 									<div className='wrapper-activation-page'>
 										{errorMessage && <p> {errorMessage} </p>}
 									</div>

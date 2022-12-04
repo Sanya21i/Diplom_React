@@ -15,9 +15,6 @@ const BlogsPage = () => {
 	const pagesCount = useAppSelector(pagesCountBlogsSelector);
 	const page: number = useAppSelector(currentPageBlogsSelector);
 	const filter = useAppSelector(filterBlogsSelector);
-	
-	
-	
 
 	const onPageChange = useCallback((page: number | string) => {
 		dispatch(blogsActionCreators.getBlogsWithPage(page))
@@ -25,7 +22,7 @@ const BlogsPage = () => {
 
 	const onSortItemChange = (sortItem: string) => {
 		dispatch(blogsActionCreators.getBlogsWithSort(sortItem))
-	}
+	};
 
 	useEffect(() => {
 		dispatch(blogsActionCreators.getBlogs());
