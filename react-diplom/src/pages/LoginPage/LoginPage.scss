@@ -6,48 +6,76 @@
 		max-width: 1120px;
 		margin: auto;
 
+		@include md {
+			max-width: 688px;
+		}
+
+		@include sm {
+			max-width: 272px;
+		}
+
 		&-title {
 			margin: 32px 0 72px;
+
+			@include md {
+				margin: 60px 0;
+			}
+
+			@include sm {
+				margin: 56px 0 48px;
+			}
 		}
 
 		&-wrapper {
 			background-color: white;
 			max-width: 624px;
 			height: 472px;
-			margin: 0 auto 150px;
+			margin: 0 auto 56px;
 			padding: 40px;
 			border-radius: 16px;
+
+			@include md {
+				max-width: 688px;
+			}
+
+			@include sm {
+				max-width: 272px;
+				padding: 24px;
+			}
+
+			Input {
+				width: 100%;
+				padding: 18px 20px;
+				border: 1px solid rgba(49, 48, 55, 0.1);
+				border-radius: 4px;
+
+				&:hover, :focus {
+					border: 1px solid #6C1BDB;					
+				}
+			}
 
 			&-email {
 				margin-bottom: 40px;
 
-				&-title {
-					margin-bottom: 8px;
+				@include sm {
+					margin-bottom: 32px;
 				}
 
-				&-input {
-
-					Input {
-						width: 100%;
-						padding: 18px 20px;
-					}
+				&-title {
+					margin-bottom: 8px;
 				}
 			}
 
 			&-password {
 				margin-bottom: 48px;
 
+				@include sm {
+					margin-bottom: 36px;
+				}
+
 				&-title {
 					margin-bottom: 8px;
-				}
-
-				&-input {
-
-					Input {
-						width: 100%;
-						padding: 18px 20px;
-					}
-				}
+				}				
 
 				&-text {
 					margin-top: 16px;
@@ -56,6 +84,11 @@
 
 			&-button {
 				margin-bottom: 24px;
+
+				.button-disabled{
+					background-color: rgba(49, 48, 55, 0.1);
+					color: rgba(49, 48, 55, 0.5);
+				}
 				
 				Button {
 					width: 100%;
@@ -81,6 +114,18 @@
 				font-size: 16px;
 				line-height: 20px;
 				color: #8D8E97;
+
+				@include sm {
+					font-size: 14px;
+				}
+
+				.sing-up-link {
+					color: #313037;
+
+					&:hover {
+						color: #6C1BDB;
+					}
+				}
 			}
 		}
 	}

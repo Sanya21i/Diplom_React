@@ -1,5 +1,6 @@
-.footer {
-	margin: 35px 0;
+@import 'src/global.scss';
+
+.footer {	
 	
 	&-container {
 		max-width: 1120px;
@@ -7,10 +8,24 @@
 		border-top: 1px solid rgba(49, 48, 55, 0.1);
 		padding: 35px 0;
 
+		@include md {
+			max-width: 688px;
+		}
+
+		@include sm {
+			min-width: 272px;
+		}
+
 		&-wrap {
 			display: flex;			
 			justify-content: space-between;
 			align-items: center;
+
+			@include sm {
+				justify-content:flex-start;
+				flex-direction: column;
+				gap:24px
+			}
 
 			&-text {
 				font-family: 'Inter';

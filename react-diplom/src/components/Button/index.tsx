@@ -1,4 +1,5 @@
 import React from 'react';
+import './Button.scss';
 
 interface IButtonProps extends React.ComponentProps<'button'>{
    text: string;

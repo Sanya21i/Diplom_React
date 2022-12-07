@@ -1,3 +1,5 @@
+@import '../../global.scss';
+
 .select {
 	display: flex;
 	position: relative;
@@ -13,6 +15,14 @@
 		color: rgba(49, 48, 55, 1);
 		padding: 0 10px;
 		border-radius: 4px;
+
+		@include md {
+			width: 328px;
+		}
+	
+		@include sm {
+			width: 272px;
+		}
 
 		&:hover {
 			border: 1px solid #6C1BDB;
@@ -52,13 +62,21 @@
 	}
 	
 	&-dropdown {
-		width: 250px;
+		width: 256px;
 		position: absolute;
 		top: 110%;
 		background: #FFFFFF;
 		color: rgba(49, 48, 55, 1);
-		z-index: 1;		
+		z-index: 56;		
 		border-radius: 4px;
+
+		@include md {
+			width: 328px;
+		}
+	
+		@include sm {
+			width: 272px;
+		}
 
 		&-wrap {
 			padding: 0;

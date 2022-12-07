@@ -21,6 +21,7 @@ const Select = ({ options, onChange }: ISelectProps) => {
 		onChange(options.value);
 		switching();
 	};
+	
 	return (
 		<>
 			<div className='select'>
@@ -52,4 +53,4 @@ const Select = ({ options, onChange }: ISelectProps) => {
 	)
 };
 
-export default Select;
+export default React.memo(Select);

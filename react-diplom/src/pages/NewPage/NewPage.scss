@@ -1,7 +1,18 @@
+@import '../../global.scss';
+
 .new-container {
 	width: 1120px;
 	margin: auto;
 	padding: 72px 0;
+
+	@include md {
+		max-width: 688px;
+	}
+
+	@include sm {
+		max-width: 272px;
+		padding: 56px 0 0;
+	}
 
 	&-nav {
 
@@ -12,6 +23,10 @@
 
 	&-title {
 		margin: 32px 0 48px;
+
+		@include sm {
+			margin: 28px 0 36px;
+		}
 	}
 
 	&-img {
@@ -20,17 +35,34 @@
 			width: 1120px;
 			background: linear-gradient(133.87deg, rgba(77, 10, 199, 0.2) -10.18%, rgba(145, 46, 242, 0.2) 108.59%);
 			border-radius: 16px;
+
+			@include md {
+				width: 688px;
+			}
+		
+			@include sm {
+				width: 272px;
+			}
 		}
 	}
 
 	&-text {
 		margin: 48px 0;
+
+		@include sm {
+			margin: 36px 0;
+		}
 	}
 	
 	&-social {
 		display: flex;
 		padding-bottom: 72px;
 		border-bottom: 1px solid rgba(49, 48, 55, 0.1);
+
+		@include sm {
+			max-width: 272px;
+			padding-bottom: 56px;
+		}
 
 		&-facebook, &-twitter {
 			display: flex;
@@ -40,7 +72,11 @@
 			height: 56px;
 			background: rgba(49, 48, 55, 0.1);
 			border-radius: 4px;	
-			margin-right: 6px;		
+			margin-right: 6px;
+
+			@include sm {
+				width: 72px;
+			}
 		}
 
 		& a {			

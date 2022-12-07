@@ -1,3 +1,5 @@
+@import 'src/global.scss';
+
 .header {
 	background-color: #FFFFFF;
 	z-index: 6;
@@ -10,6 +12,10 @@
 		height: 96px;
 		margin: auto;
 
+		@include sm {
+			height: 80px;			
+		}		
+
 		&-logo {
 			background-image: url(../../../img/blogologo.svg);
 			width: 167px;
@@ -17,15 +23,81 @@
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: contain;
+			margin-right: 15px;
+
+			@include sm {
+				width: 133px;
+				height: 44px;
+			}
 		}
 
 		&-wrap {
 			display: flex;
 			gap: 20px;
 			align-items: center;
+			flex-grow: 1;
+
+			@include sm {
+				flex-grow: 0;
+			}
+			form {
+				flex-grow: 1;
+				position: relative;
+			}
+
+			Input {
+				width: 100%;
+				height: 96px;
+				border: none;
+				background: rgba(49, 48, 55, 0.1);
+				color: rgba(49, 48, 55, 0.5);
+				padding: 36px;
+			}
 
 			&-search {
-				margin: auto;
+				margin: 0 0 0 auto;
+				cursor: pointer;
+				.fa-magnifying-glass{
+					font-size: 20px;
+					opacity: 0.8;
+				}
+
+				@include sm {
+					display: none;
+				}
+			}
+
+			.close-input-search {
+				position: absolute;
+				top: 36px;
+				right: 20px;
+				width: 24px;
+				height: 24px;
+				opacity: 0.7;
+				cursor: pointer;
+				transition: opacity ease 0.5s;
+
+				&:hover {
+					opacity: 1;
+				}
+
+				&::before, &::after {
+					content: '';
+					position: absolute;
+					top: 10px;
+					display: block;
+					width: 24px;
+					height: 3px;
+					background: #000;
+				}
+
+				&::before {
+					transform: rotate(45deg);
+				}
+
+				&::after {
+					transform: rotate(-45deg);
+				}
 			}
 			
 			&-username {
@@ -35,9 +107,14 @@
 				font-size: 16px;
 				line-height: 34px;
 				color: #313037;
+
+				@include sm {
+					display: none;
+				}
 			}
 			
 			.logout {
+				cursor: pointer;
 				background: linear-gradient(133.87deg, #4D0AC7 -10.18%, #912EF2 108.59%);
 				border-radius: 4px;
 				font-family: 'Inter';
@@ -49,6 +126,10 @@
 				align-items: center;
 				text-align: center;
 				color: #FFFFFF;
+				
+				&:hover {
+					background: #912EF2;
+				}
 			}
 		}
 	}

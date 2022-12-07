@@ -20,14 +20,22 @@ const BlogsPage = () => {
 		dispatch(blogsActionCreators.getBlogsWithPage(page))
 	}, [dispatch]);
 
-	const onSortItemChange = (sortItem: string) => {
+	const onSortItemChange = useCallback((sortItem: string) => {
 		dispatch(blogsActionCreators.getBlogsWithSort(sortItem))
-	};
+	}, [dispatch]);
 
 	useEffect(() => {
 		dispatch(blogsActionCreators.getBlogs());
 		dispatch(blogsActionCreators.setPagesCount());
 	}, [dispatch]);
+
+	const onPagePagination = useCallback((page: number | string) => {
+		return (onPageChange(page))
+	}, [onPageChange]);
+
+	const onSortItemChangeSelect = useCallback((sortItem: string) => {
+		return (onSortItemChange(sortItem))
+	}, [onSortItemChange]);
 
 	return (
 		<>
@@ -46,7 +54,7 @@ const BlogsPage = () => {
 							</Link>
 						</div>
 						<div className='blogs-container-select'>
-							<Select options={OPTIONS} onChange={(sortItem) => onSortItemChange(sortItem)} />
+							<Select options={OPTIONS} onChange={onSortItemChangeSelect} />
 						</div>						
 						<BlogList items={blogs} />
 						<Pagination
@@ -55,7 +63,7 @@ const BlogsPage = () => {
 							blogsPageLimit={12}
 							className='pagination-blogs'
 							siblingCount={1}
-							onPageChange={page => onPageChange(page)}
+							onPageChange={onPagePagination}
 						/>
 					</>					
 				) : (
@@ -68,7 +76,7 @@ const BlogsPage = () => {
 							blogsPageLimit={12}
 							className='pagination-blogs'
 							siblingCount={1}
-							onPageChange={page => onPageChange(page)} />
+							onPageChange={onPagePagination} />
 					</>
 				)}				
 			</div>			

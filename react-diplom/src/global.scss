@@ -1,4 +1,6 @@
 @import 'sass/_fonts.scss';
+@import 'sass/_mixins.scss';
+@import 'sass/_breakpoints.scss';
 
 h1 {
 	font-family: 'Inter';
@@ -7,6 +9,12 @@ h1 {
 	font-size: 56px;
 	line-height: 80px;
 	color: #313037;
+
+	@include sm {		
+		font-size: 32px;
+		line-height: 48px;
+		color: #323537;
+	}
 }
 
 .h1-p {
@@ -15,7 +23,6 @@ h1 {
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 24px;
-
 }
 
 h2 {
@@ -25,6 +32,11 @@ h2 {
 	font-size: 32px;
 	line-height: 44px;
 	color: #323537;
+
+	@include sm {
+		font-size: 24px;
+		line-height: 36px;
+	}
 }
 
 h3 {
@@ -47,10 +59,10 @@ h3 {
 
 .s1-p {
 	font-family: 'Inter';
-	font-style: italic;
+	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
-	line-height: 24px;	
+	line-height: 24px;
 }
 
 .b1 {
@@ -69,6 +81,11 @@ h3 {
 	font-size: 18px;
 	line-height: 32px;
 	color: #323537;
+
+	@include sm {
+		font-size: 16px;
+		line-height: 24px;
+	}
 }
 
 .b2 {

@@ -59,7 +59,7 @@ const LoginPage = () => {
 										<p className='b1'>Email</p>
 									</div>
 									<div className='login-container-wrapper-email-input'>
-										<Input className='c2-p' placeholder='Your email' onChange={onLoginFormChange} fieldName='email' value={loginForm.email} />
+										<Input className='c2-p' placeholder='Your email' autoFocus onChange={onLoginFormChange} fieldName='email' value={loginForm.email} />
 									</div>
 								</div>
 								<div className='login-container-wrapper-password'>
@@ -74,7 +74,12 @@ const LoginPage = () => {
 									</div>
 								</div>
 								<div className='login-container-wrapper-button'>
-									<Button disabled={isButtonDisabled} type='button' text='Sign in' onClick={onLoginFormSubmit} />
+									{isButtonDisabled ? (
+										<Button disabled={isButtonDisabled} className='button-disabled' type='button' text='Sign in' onClick={onLoginFormSubmit} />
+									) : (
+										<Button disabled={isButtonDisabled} type='button' text='Sign in' onClick={onLoginFormSubmit} />
+									)}
+									
 								</div>
 								<div className='login-container-wrapper-sing-up'>
 									<span className='sing-up-text'>Don't have an account?</span>
