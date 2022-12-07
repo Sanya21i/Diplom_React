@@ -1,18 +1,74 @@
-.wrapper {
+@import '../../../global.scss';
+
+.wrapper-news-card {
+	position: relative;
 	width: 352px;
 	height: 388px;
 	background: #FFFFFF;
 	border-radius: 16px;
 	margin-bottom: 40px;
+	z-index: 1;
+	box-shadow: 0px 12px 40px 9px rgba(0, 0, 0, 0.1);
 
-	& img {
+	@include md {
+		width: 328px;
+	}
+
+	@include sm {
+		width: 272px;
+		height: 336px;
+		margin-bottom: 32px;
+	}
+
+	&:hover {
+		
+		.wrapper-news-card-background {
+			background: none;
+		}
+	}
+
+	&-background {
+		position: absolute;
 		width: 352px;
 		height: 208px;
-		border-radius: 16px;
+		background: linear-gradient(133.87deg, rgba(77, 10, 199, 0.6) -10.18%, rgba(145, 46, 242, 0.6) 108.59%);		
+		border-radius: 16px 16px 0 0;	
+
+		@include md {
+			width: 328px;
+		}
+
+		@include sm {
+			width: 272px;
+			height: 172px;
+		}		
+	}
+
+	&-image {	
+		border-radius: 16px 16px 0 0;		
+	}
+
+	& img {		
+		width: 352px;
+		height: 208px;
+		border-radius: 16px 16px 0 0;	
+		
+		@include md {
+			width: 328px;
+		}
+
+		@include sm {
+			width: 272px;
+			height: 172px;
+		}
 	}
 
 	&-text {
 		padding: 32px;
+
+		@include sm {
+			padding: 24px;
+		}
 		
 		& p {
 			margin-bottom: 8px;

@@ -1,6 +1,16 @@
+@import '../../global.scss';
+
 .news-container {
 	width: 1120px;
 	margin: auto;
+
+	@include md {
+		max-width: 688px;
+	}
+
+	@include sm {
+		max-width: 272px;
+	}
 
 	&-title {
 		margin: 72px 0 40px;
@@ -18,6 +28,7 @@
 			padding: 0px 40px 24px;
 			width: 141px;
 			height: 48px;
+
 			cursor: pointer;
 			& :hover {
 				color: #6C1BDB;
@@ -39,12 +50,24 @@
 	&-select {
 		display: flex;
 		justify-content: flex-end;
-		margin: 64px 0;		
+		margin: 64px 0;
+
+		@include md {
+			margin: 56px 0;
+		}
+
+		@include sm {
+			margin: 48px 0;
+		}
 	}
 	
 	.pagination-blogs {
 		margin-bottom: 72px;
 		display: flex;
 		justify-content: space-between;
+	}
+
+	&-search {
+		margin: 30px 0 60px;
 	}
 }

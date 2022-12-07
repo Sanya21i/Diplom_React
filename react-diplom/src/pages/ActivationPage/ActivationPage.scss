@@ -1,15 +1,36 @@
+@import '../../global.scss';
+
 .activation-container {
 	width: 1120px;
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
 	margin: auto;
+	text-align: center;
+
+	@include md {
+		max-width: 688px;
+	}
+
+	@include sm {
+		max-width: 272px;
+	}
+	
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 30px;
+		margin: 30px auto 0;
+	}
 	
 	& Button {
 		width: 250px;
-		height: 100px;
+		height: 80px;
 		margin: auto;
 		background-color: #6C1BDB;
 		border-radius: 4px;
+		color: #FFFFFF;
+
+		@include sm {
+			width: 100%;
+		}
 	}
 }

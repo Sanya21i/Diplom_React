@@ -1,0 +1,16 @@
+@import '../../global.scss';
+
+.not_found-container {
+	width: 600px;
+	margin: 50px auto;
+   text-align: center;
+
+	&-link {
+		margin: 40px;
+		color: #6C1BDB;
+		
+		&:hover {
+			color: #912EF2;
+		}
+	}	
+}

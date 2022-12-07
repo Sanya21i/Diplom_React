@@ -53,11 +53,10 @@ const RegistrationPage = () => {
 		<>
 			{
 				isRegistered ? (
-
 					<div className='error-items'>
 						<div className='error-items-container'>
 							<div className='error-items-container-wrap'>
-								<h2>Pleaes check email to verify your account!</h2>
+								<h2>Please check email to verify your account!</h2>
 								<Link to='/login'>
 									<Button text='Go to the login page' />
 								</Link>
@@ -80,7 +79,7 @@ const RegistrationPage = () => {
 													<p className='b1'>Username</p>
 												</div>
 													<div className='registration-container-wrapper-username-input'>
-														<Input placeholder='Your username' className='c2-p' onChange={onRegistrationFormChange} fieldName='username' value={registrationForm.username} />													
+														<Input placeholder='Your username' autoFocus className='c2-p' onChange={onRegistrationFormChange} fieldName='username' value={registrationForm.username} />													
 													</div>
 											</div>	
 											<div className='registration-container-wrapper-email'>									
@@ -102,10 +101,14 @@ const RegistrationPage = () => {
 													<p className='c2-p'>Forgot password?</p>
 												</div>
 											</div>
-											<div className='registration-container-wrapper-button'>
-												<Button disabled={isButtonDisabled} type='button' text='Sign up' onClick={onRegistrationFormSubmit} />
+												<div className='registration-container-wrapper-button'>
+													{isButtonDisabled ? (
+														<Button disabled={isButtonDisabled} className='button-disabled' type='button' text='Sign up' onClick={onRegistrationFormSubmit} />
+													) : (
+														<Button disabled={isButtonDisabled} type='button' text='Sign up' onClick={onRegistrationFormSubmit} />
+													)}													
 											</div>
-											<div className='registration-container-wrapper-sing-up'>
+											<div className='registration-container-wrapper-sing-in'>
 												<span className='sing-in-text'>Do have an account?</span>
 												<Link to='/login' >
 													<span className='sing-in-link'>Sing In</span>

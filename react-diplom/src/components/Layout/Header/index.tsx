@@ -8,12 +8,15 @@ import Button from '../../Button';
 import { authActionCreators } from '../../../redux/actions/authActionCreators';
 import Input from '../../Input';
 import { blogsActionCreators } from '../../../redux/actions/blogsActionCreators';
-
+import { newsActionCreators } from '../../../redux/actions/newsActionCreators';
 
 const Header = () => {
 	const { username } = useAppSelector(dataAuthSelector);
 	const isAuth = useAppSelector(isAuthAuthSelector);
-	const dispatch = useAppDispatch();	
+	const dispatch = useAppDispatch();
+	const [open, setOpen] = useState<boolean>(false);
+	const onClickOpen = useCallback(() => setOpen(true), []);
+	const onClickClose = useCallback(() => setOpen(false), []);
 
 	const [searchForm, setSearchForm] = useState({ searchText: '' })
 
@@ -31,14 +34,19 @@ const Header = () => {
 					<div className='header-container-logo'></div>
 					<div className='header-container-wrap'>
 						{isAuth ?
-							<>
-								<form onSubmit={(e) => {
-									e.preventDefault();
-									dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText))									
-								}}>									
-									<Input value={searchForm.searchText} fieldName='searchText' onChange={onSearchTextChange} />
-								</form>
-								<div className='header-container-wrap-search'><FontAwesomeIcon icon={ faMagnifyingGlass } /></div>
+							<>								
+								{open ? (
+									<form onSubmit={(e) => {
+										e.preventDefault();
+										dispatch(blogsActionCreators.getBlogsWithFilter(searchForm.searchText));
+										dispatch(newsActionCreators.getNewsWithFilter(searchForm.searchText));
+									}}>									
+										<Input className='s1-p' value={searchForm.searchText} fieldName='searchText' placeholder='Search...' onChange={onSearchTextChange} />
+										<div className='close-input-search' onClick={onClickClose}></div>
+									</form>
+								) : (
+									<div className='header-container-wrap-search' onClick={onClickOpen}><FontAwesomeIcon icon={faMagnifyingGlass} /></div>
+								)}								
 								<div className='header-container-wrap-username'>{username}</div>
 								<Button onClick={onLogout} className='logout' text='Logout' />
 							</>

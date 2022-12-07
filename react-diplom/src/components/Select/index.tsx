@@ -21,8 +21,8 @@ const Select = ({ options, onChange }: ISelectProps) => {
 		onChange(options.value);
 		switching();
 	};
+	
 	return (
-
 		<>
 			<div className='select'>
 				<div className='select-wrap s1' onClick={switching}>
@@ -53,4 +53,4 @@ const Select = ({ options, onChange }: ISelectProps) => {
 	)
 };
 
-export default Select;
+export default React.memo(Select);

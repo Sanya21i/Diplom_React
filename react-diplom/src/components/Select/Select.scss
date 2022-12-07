@@ -1,23 +1,32 @@
+@import '../../global.scss';
+
 .select {
 	display: flex;
 	position: relative;
-	height: 56px;
-	
+	height: 56px;	
 	
 	&-wrap {
+		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
-		width: 250px;
+		width: 256px;
 		align-items:center;
 		background: #FFFFFF;
 		color: rgba(49, 48, 55, 1);
 		padding: 0 10px;
+		border-radius: 4px;
+
+		@include md {
+			width: 328px;
+		}
+	
+		@include sm {
+			width: 272px;
+		}
+
 		&:hover {
 			border: 1px solid #6C1BDB;
 		}
-		
-		cursor: pointer;
-		
 
 		&::before {
 			content: 'Sort:';			
@@ -26,14 +35,15 @@
 
 		.arrow-up {
 			position: relative;
-			content: '';
 			display: inline-block;
+			content: '';			
 			width: 8px;
 			height: 8px;
 			border-right: 2px solid rgba(49, 48, 55, 1);
 			border-top: 2px solid rgba(49, 48, 55, 1);
 			transform: rotate(315deg) translate(-40%, 40%);
 		}
+
 		.arrow-down {
 			position: relative;
 			content: '';
@@ -43,30 +53,55 @@
 			border-right: 2px solid rgba(49, 48, 55, 0.5);
 			border-top: 2px solid rgba(49, 48, 55, 0.5);
 			transform: rotate(134deg);
+
 			&:hover {
 				border-right: 2px solid rgba(49, 48, 55, 1);
 				border-top: 2px solid rgba(49, 48, 55, 1);
 			}
 		}
 	}
+	
 	&-dropdown {
-		width: 250px;
+		width: 256px;
 		position: absolute;
 		top: 110%;
 		background: #FFFFFF;
 		color: rgba(49, 48, 55, 1);
-		z-index: 1;
+		z-index: 56;		
 		border-radius: 4px;
+
+		@include md {
+			width: 328px;
+		}
+	
+		@include sm {
+			width: 272px;
+		}
+
 		&-wrap {
 			padding: 0;
-			margin: auto;
+			margin: auto;			
+			border-radius: 4px;
 			
-
 			&-item {
-				border: 1px solid rgba(49, 48, 55, 0.5);
+				background-color: #FFFFFF;
 				padding: 10px;
 				height: 45px;
 				cursor: pointer;
+				border-bottom: 1px solid rgba(49, 48, 55, 0.1);;
+
+				&:first-child {					
+					border-radius:4px 4px 0 0;
+					text-align: right;
+					margin: 0 0 0 auto;
+					background-color: #FFFFFF;
+				}
+				
+				&:last-child {
+					border-radius: 0 0 4px 4px;
+					border-bottom: none;
+				}
+
 				&:hover {
 					color: #6C1BDB;
 				}
