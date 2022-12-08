@@ -14,6 +14,10 @@ body {
 	background-color: #E5E5E5;
 }
 
+input:focus{
+	outline: none;
+}
+
 a, li, ul {
 	text-decoration: none;
 

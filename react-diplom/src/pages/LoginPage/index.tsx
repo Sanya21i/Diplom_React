@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/Input';
 import './LoginPage.scss';
@@ -7,12 +7,17 @@ import { authActionCreators } from '../../redux/actions/authActionCreators';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { errorAuthSelector, isLoadingAuthSelector, isAuthAuthSelector } from '../../redux/selectors/authSelectors';
 import Loading from '../../components/Loading';
-import { checkEmail } from '../../constants';
+import { CHECK_EMAIL, EMPTY_EMAIL, EMPTY_PASSWORD, INCORRECT_EMAIL } from '../../constants';
 
 const initialLoginForm = { email: '', password: '' };
 
 const LoginPage = () => {
 	const [loginForm, setLoginForm] = useState(initialLoginForm);
+	const [emailDirty, setEmailDirty] = useState(false);
+	const [passwordDirty, setPasswordDirty] = useState(false);
+	const [emailError, setEmailError] = useState(EMPTY_EMAIL);
+	const [passwordError, setPasswordError] = useState(EMPTY_PASSWORD);
+	const [formValid, setFormValid] = useState(false);
 
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -27,21 +32,58 @@ const LoginPage = () => {
 		}
 	}, [isAuth, navigate]);
 
-	const onLoginFormChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+	const onLoginFormChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {		
 		setLoginForm(prevState => ({ ...prevState, [e.target.id]: e.target.value }));
-	}, []);
+		
+		switch (e.target.name) {
+			case 'email':				
+				if (!CHECK_EMAIL.test(String(e.target.value).toLowerCase())) {
+					setEmailError(INCORRECT_EMAIL);
+
+					if (!e.target.value) {
+						setEmailError(EMPTY_EMAIL);
+					};
+				} else {
+					setEmailError('');
+				}
+				break
+			case 'password':
+				if (e.target.value.length <= 8) {
+					setPasswordError('Password должен содержать не менее 8 символов');
+
+					if (!e.target.value) {
+						setPasswordError('Password не может быть пустым');
+					};
+				} else {
+					setPasswordError('');
+				}
+				break
+		}
+	}, [loginForm.email, loginForm.password]);
 
 	const onLoginFormSubmit = useCallback(() =>
 		dispatch(authActionCreators.getLogin({ email: loginForm.email, password: loginForm.password })),
 		[dispatch, loginForm.email, loginForm.password]
 	);
 
-	const isButtonDisabled = useMemo(() => {
-		const formValues = Object.values(loginForm);
-		let [email, password] = formValues;
-		
-		return !(formValues.filter(item => !!item).length === formValues.length) || !checkEmail.test(String(email).toLowerCase()) || password.length <= 8
-	}, [loginForm]);
+	const blurHundler = (e: React.ChangeEvent<HTMLInputElement>) => {
+		switch (e.target.name) {
+			case 'email':
+				setEmailDirty(true)
+				break
+			case 'password':
+				setPasswordDirty(true)
+				break
+		}
+	};
+
+	useEffect(() => {
+		if (emailError || passwordError) {
+			setFormValid(false);
+		} else {
+			setFormValid(true);
+		}
+	}, [emailError, passwordError]);
 
 	return (
 		<>
@@ -58,26 +100,40 @@ const LoginPage = () => {
 									<div className='login-container-wrapper-email-title'>
 										<p className='b1'>Email</p>
 									</div>
-									<div className='login-container-wrapper-email-input'>
-										<Input className='c2-p' placeholder='Your email' autoFocus onChange={onLoginFormChange} fieldName='email' value={loginForm.email} />
-									</div>
+									{emailError && emailDirty ? (
+										<div className='login-container-wrapper-email-input-error'>
+											<Input onBlur={e => blurHundler(e)} name='email' className='c2-p' placeholder='Your email' autoFocus onChange={onLoginFormChange} fieldName='email' value={loginForm.email} />
+										</div>
+									) : (
+										<div className='login-container-wrapper-email-input'>
+											<Input onBlur={e => blurHundler(e)} name='email' className='c2-p' placeholder='Your email' autoFocus onChange={onLoginFormChange} fieldName='email' value={loginForm.email} />
+										</div>
+									)}
+									{(emailDirty && emailError) && <div className='login-container-wrapper-email-error'>{emailError}</div>}
 								</div>
 								<div className='login-container-wrapper-password'>
 									<div className='login-container-wrapper-password-title'>
 										<p className='b1'>Password</p>
 									</div>
-									<div className='login-container-wrapper-password-input'>
-										<Input className='c2-p' placeholder='Your password' onChange={onLoginFormChange} fieldName='password' value={loginForm.password} />
-									</div>
+									{passwordError && passwordDirty ? (
+										<div className='login-container-wrapper-password-input-error'>
+											<Input type='password' onBlur={e => blurHundler(e)} name='password' className='c2-p' placeholder='Your password' onChange={onLoginFormChange} fieldName='password' value={loginForm.password} />
+										</div>										
+									) : (
+										<div className='login-container-wrapper-password-input'>
+											<Input type='password' onBlur={e => blurHundler(e)} name='password' className='c2-p' placeholder='Your password' onChange={onLoginFormChange} fieldName='password' value={loginForm.password} />
+										</div>
+									)}									
+									{(passwordDirty && passwordError) && <div className='login-container-wrapper-password-error'>{passwordError}</div>}
 									<div className='login-container-wrapper-password-text'>
 										<p className='c2-p'>Forgot password?</p>
 									</div>
 								</div>
 								<div className='login-container-wrapper-button'>
-									{isButtonDisabled ? (
-										<Button disabled={isButtonDisabled} className='button-disabled' type='button' text='Sign in' onClick={onLoginFormSubmit} />
+									{!formValid ? (
+										<Button disabled={!formValid} className='button-disabled' type='button' text='Sign in' onClick={onLoginFormSubmit} />
 									) : (
-										<Button disabled={isButtonDisabled} type='button' text='Sign in' onClick={onLoginFormSubmit} />
+										<Button disabled={!formValid} type='button' text='Sign in' onClick={onLoginFormSubmit} />
 									)}
 									
 								</div>
@@ -87,7 +143,8 @@ const LoginPage = () => {
 										<span className='sing-up-link'>Sing Up</span>
 									</Link>
 								</div>
-							</>) : (<Loading />)}						
+							</>
+						) : (<Loading />)}						
 					</div>
 				</div>
 			</div>

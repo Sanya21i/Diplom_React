@@ -27,9 +27,10 @@
 		}
 
 		&-wrapper {
+			position: relative;
 			background-color: white;
 			max-width: 624px;
-			height: 472px;
+			height: 492px;
 			margin: 0 auto 56px;
 			padding: 40px;
 			border-radius: 16px;
@@ -43,19 +44,28 @@
 				padding: 24px;
 			}
 
+			&-error {
+				position: absolute;
+				color: red;
+				top: 10px;
+				left: 30px;
+				width: 400px;
+			}
+
 			Input {
 				width: 100%;
 				padding: 18px 20px;
 				border: 1px solid rgba(49, 48, 55, 0.1);
 				border-radius: 4px;
 
-				&:hover, :focus {
+				&:hover, &::before {
 					border: 1px solid #6C1BDB;					
 				}
 			}
 
 			&-email {
 				margin-bottom: 40px;
+				position: relative;
 
 				@include sm {
 					margin-bottom: 32px;
@@ -64,10 +74,27 @@
 				&-title {
 					margin-bottom: 8px;
 				}
+
+				&-input {
+
+					&-error {
+
+						Input, Input:focus {
+							border: 1px solid red;
+						}
+					}
+				}
+
+				&-error {
+					position: absolute;
+					color: red;
+					top: 90px;
+				}
 			}
 
 			&-password {
 				margin-bottom: 48px;
+				position: relative;
 
 				@include sm {
 					margin-bottom: 36px;
@@ -75,10 +102,25 @@
 
 				&-title {
 					margin-bottom: 8px;
-				}				
+				}
+				&-input {
+
+					&-error {
+
+						Input {
+							border: 1px solid red;
+						}
+					}
+				}
 
 				&-text {
-					margin-top: 16px;
+					margin-top: 36px;
+				}
+
+				&-error {					
+					position: absolute;
+					color: red;
+					top: 90px;
 				}
 			}
 
@@ -88,6 +130,7 @@
 				.button-disabled{
 					background-color: rgba(49, 48, 55, 0.1);
 					color: rgba(49, 48, 55, 0.5);
+					cursor: auto;
 				}
 				
 				Button {

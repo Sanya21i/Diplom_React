@@ -27,9 +27,10 @@
 		}
 
 		&-wrapper {
+			position: relative;
 			background-color: white;
 			max-width: 624px;
-			height: 590px;
+			height: 615px;
 			margin: 0 auto 150px;
 			padding: 40px;
 			border-radius: 16px;
@@ -54,69 +55,119 @@
 				}
 			}
 
-			&-username {
-				margin-bottom: 40px;
+			&-error {
+				position: absolute;
+				color: red;
+				top: 10px;
+				left: 30px;
+				width: 400px;
+			}
 
-				@include sm {
-					margin-bottom: 32px;
-				}
+			&-username {
+				position: relative;
+				margin-bottom: 40px;
 
 				&-title {
 					margin-bottom: 8px;
+				}
+
+				&-input {
+
+					&-error {
+
+						Input {
+							border: 1px solid red;
+						}
+					}
+				}
+
+				&-error {
+					position: absolute;
+					color: red;
+					top: 90px;
 				}
 			}
 
 			&-email {
+				position: relative;
 				margin-bottom: 40px;
-
-				@include sm {
-					margin-bottom: 32px;
-				}
 
 				&-title {
 					margin-bottom: 8px;
+				}
+
+				&-input {
+
+					&-error {
+
+						Input {
+							border: 1px solid red;
+						}
+					}
+				}
+
+				&-error {
+					position: absolute;
+					color: red;
+					top: 90px;
 				}
 			}
 
 			&-password {
 				margin-bottom: 48px;
-
-				@include sm {
-					margin-bottom: 36px;
-				}
-
+				position: relative;
 				&-title {
 					margin-bottom: 8px;
-				}				
+				}
+
+				&-input {
+
+					&-error {
+
+						Input {
+							border: 1px solid red;
+						}
+					}
+				}
+				
+				&-error {
+					position: absolute;
+					color: red;
+					top: 90px;
+				}
 
 				&-text {
-					margin-top: 16px;
+					margin-top: 40px;
 				}
 			}
 
 			&-button {
-				margin-bottom: 24px;
-
-				.button-disabled{
-					background-color: rgba(49, 48, 55, 0.1);
-					color: rgba(49, 48, 55, 0.5);
-				}
+				margin-bottom: 24px;	
 
 				Button {
 					width: 100%;
-					height: 56px;
-					background-color: #6C1BDB;
+					height: 56px;					
 					border-radius: 4px;
 					font-family: 'Inter';
 					font-style: normal;
 					font-weight: 600;
 					font-size: 18px;
 					line-height: 24px;
-					color: #FFFFFF;
-					
-					&:hover{
-						background-color: #912EF2;
+				}
+
+				&-disabled {					
+					cursor: auto;
+					background-color: rgba(49, 48, 55, 0.1);
+					color: rgba(49, 48, 55, 0.5);
+
+					&:hover {
+						background-color: rgba(49, 48, 55, 0.1);
 					}
+				}
+
+				&-active {
+					background-color: #6C1BDB;
+					color: #FFFFFF;	
 				}
 			}
 
